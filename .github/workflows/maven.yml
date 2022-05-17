@@ -24,3 +24,13 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+    - uses: mr-smithers-excellent/docker-build-push@v5
+    - name: Build & push Docker image
+      with:
+        image: ceczh/acction-demo
+        tags: v1, latest
+        registry: registry-url.io
+        dockerfile: Dockerfile.ci
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
