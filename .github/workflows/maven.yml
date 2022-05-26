@@ -8,6 +8,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+env:
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   build:
@@ -27,7 +29,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        tags: latest
+        tags: ${{ env.IMAGE_TAG }},latest
         image: ceczh/action-demo
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
