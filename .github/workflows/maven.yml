@@ -48,5 +48,4 @@ jobs:
         image: ceczh/action-demo:latest
         registry_hostname: docker.io
         namespace: bootsite
-        registry_username: ${{ secrets.DOCKER_USERNAME }}
-        registry_password: ${{ secrets.DOCKER_PASSWORD }}
+        image_pull_secret_name: private-registry
