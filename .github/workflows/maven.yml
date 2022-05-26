@@ -41,3 +41,4 @@ jobs:
       with:
         openshift_server_url: https://master.example.com:8443
         openshift_token: ${{secrets.OPENSHIFT_TOKEN}}
+        insecure_skip_tls_verify: true
