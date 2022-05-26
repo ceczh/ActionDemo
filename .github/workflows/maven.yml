@@ -46,7 +46,7 @@ jobs:
     - name: oc-new-app
       uses: redhat-actions/oc-new-app@v1
       with:
-        app_name: ActionDemo
+        app_name: actiondemo
         image: ceczh/action-demo:latest
         registry_hostname: docker.io
         registry_username: ${{ secrets.DOCKER_USERNAME }}
