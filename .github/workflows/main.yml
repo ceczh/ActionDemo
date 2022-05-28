@@ -40,7 +40,7 @@ jobs:
       uses: redhat-actions/oc-new-app@v1
       with:
         app_name: actiondemo
-        image: ceczh/action-demo
+        image: 10.240.131.195:8082/docker-local/ceczh/action-demo:latest
         registry_hostname: 10.240.131.195:8082/docker-local
         namespace: bootsite
         image_pull_secret_name: docker195
