@@ -26,7 +26,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         tags: ${{ env.IMAGE_TAG }},latest
-        image: docker-local/ceczh/action-demo
+        image: docker-local/ceczh1/action-demo
         registry: 10.240.131.195:8082/docker-local
         username: ${{ secrets.DOCKER_USERNAME158 }}
         password: ${{ secrets.DOCKER_PASSWORD158 }}
