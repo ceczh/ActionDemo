@@ -27,7 +27,7 @@ jobs:
       with:
         tags: ${{ env.IMAGE_TAG }},latest
         image: ceczh/action-demo
-        registry: 10.240.131.195:8082
+        registry: 10.240.131.195:8082/docker-local
         username: ${{ secrets.DOCKER_USERNAME158 }}
         password: ${{ secrets.DOCKER_PASSWORD158 }}
     - name: OpenShift Login
@@ -40,7 +40,7 @@ jobs:
       uses: redhat-actions/oc-new-app@v1
       with:
         app_name: actiondemo
-        image: docker-local/openjdk:8-jdk-alpine
-        registry_hostname: 10.240.131.195:8082
+        image: ceczh/action-demo
+        registry_hostname: 10.240.131.195:8082/docker-local
         namespace: bootsite
         image_pull_secret_name: docker195
