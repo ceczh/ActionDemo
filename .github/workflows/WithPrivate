@@ -1,0 +1,46 @@
+name: With Private server
+
+on:
+  push:
+    branches: [ main ]
+env:
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 8
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+        cache: maven
+      if: ${{ !always() }}
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        tags:  latest
+        image: ceczh/action-demo
+        registry: 10.240.131.195:8082
+        username: ${{ secrets.DOCKER_USERNAME158 }}
+        password: ${{ secrets.DOCKER_PASSWORD158 }}
+    - name: OpenShift Login
+      uses: redhat-actions/oc-login@v1.1
+      with:
+        openshift_server_url: https://master.example.com:8443
+        openshift_token: ${{secrets.OPENSHIFT_TOKEN}}
+        insecure_skip_tls_verify: true
+    - name: oc-new-app
+      uses: redhat-actions/oc-new-app@v1
+      with:
+        app_name: actiondemo
+        image: ceczh/action-demo:latest
+        registry_hostname: 10.240.131.195:8082
+        namespace: bootsite
+        image_pull_secret_name: docker195
