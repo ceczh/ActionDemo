@@ -20,7 +20,7 @@ jobs:
       with:
         tags: ${{ env.IMAGE_TAG }},latest
         image: ceczh/action-demo
-        registry: 10.240.131.195:8082/docker-local
+        registry: docker.jfrog.i8uu.com:8443
         username: ${{ secrets.DOCKER_USERNAME158 }}
         password: ${{ secrets.DOCKER_PASSWORD158 }}
     - name: OpenShift Login
