@@ -1,4 +1,4 @@
-name: With Private server
+name: With Private Server
 
 on:
   push:
