@@ -42,6 +42,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+        <repository>
+           <id>libs-release</id>
+           <url>http://jfrog.i8uu.com:880/artifactory/libs-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>libs-snapshot</id>
+            <url>http://jfrog.i8uu.com:880/artifactory/libs-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 	<build>
 		<plugins>
